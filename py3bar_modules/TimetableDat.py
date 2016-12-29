@@ -1,3 +1,4 @@
+'''Need To Test'''
 #Timetible info
 #----------------------------------------
 MonB = [['', '', ''], ['', '', ''],
@@ -100,4 +101,14 @@ FriA = [['', '', ''], ['', '', ''],
 #Other
 #----------------------------------------
 Holidays = True
+SchoolDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
+schoolTimes = [8, 15] #Start and finish hours
+         # Hr,    Min
+PTimes = [['8',  '0' ] #Period 1
+          ['8',  '50'] #Period 2
+          ['10', '20'] #Period 3
+          ['11', '10'] #Period 4
+          ['13', '20'] #Period 5
+          ['14', '10'] #Period 6
+          [str(schoolTimes[1]), '0' ]]#End
 #----------------------------------------
