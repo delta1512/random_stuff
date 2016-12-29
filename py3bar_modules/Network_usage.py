@@ -30,4 +30,4 @@ class Py3status:
         RX = results[0]
         TX = results[1]
         return {'full_text': '' + RX + ' ' + '' + TX,
-                'cached_until': py3.time_in(1)}
+                'cached_until': self.py3.time_in(1)}
