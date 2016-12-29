@@ -1,12 +1,14 @@
+'''Need To Test'''
 import commands
 import TimetableDat as tt
-from operator import xor
 
-global day, hour, minute, weekdef
+global day, hour, minute, weekdef, startSchool, endSchool
 day = commands.getoutput("date '+%a'")
 hour = int(commands.getoutput("date '+%H'"))
 minute = int(commands.getoutput("date '+%M'"))
 weekdef = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+startSchool = tt.schoolTimes[0]
+endSchool - tt.schoolTimes[1]
 
 def shift(l):
     return l[1:] + l[:1]
@@ -14,7 +16,7 @@ def shift(l):
 def In_School():
     if day != 'Sat' or day != 'Sun':
         a = True
-    if 7 < hour < 15:
+    if startSchool-1 < hour < endSchool:
         b = True
     try:
         return a and b
@@ -29,8 +31,9 @@ def Hrs_to_School():
     done = False
     #find the next shool day, i represents how many days away it is
     for i, d in enumerate(tmp):
-        if d != 'Fri' or not hour >= 15: #if not friday afternoon
-            for schoolDay in weekdef[:5]:
+        #if not the last school day afternoon
+        if d != tt.SchoolDays[len(tt.SchoolDays)-1] or not hour >= endSchool:
+            for schoolDay in tt.SchoolDays:
                 if d == schoolDay:
                     done = True
                     break
@@ -40,10 +43,10 @@ def Hrs_to_School():
     #calculate days into hours
     hours = hours + max(0, ((i-1) * 24))
     #calculate remaining hours
-    if hour >= 15:
-        hours = hours + (24 - hour) + 8
+    if hour >= endSchool:
+        hours = hours + (24 - hour) + startSchool
     else:
-        hours = hours + (8 - hour)
+        hours = hours + (startSchool - hour)
     return str(hours)
 
 if In_School():
@@ -57,6 +60,5 @@ else:
 '''
 To Add:
     - Weekly exceptions with auto cleanup
-    - school start and end as variables
     - CL UI for timetable entry
 '''
