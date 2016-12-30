@@ -1,4 +1,3 @@
-'''Need To Test'''
 import commands
 import TimetableDat as tt
 
@@ -8,7 +7,7 @@ hour = int(commands.getoutput("date '+%H'"))
 minute = int(commands.getoutput("date '+%M'"))
 weekdef = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 startSchool = tt.schoolTimes[0]
-endSchool - tt.schoolTimes[1]
+endSchool = tt.schoolTimes[1]
 
 def shift(l):
     return l[1:] + l[:1]
@@ -49,8 +48,21 @@ def Hrs_to_School():
         hours = hours + (startSchool - hour)
     return str(hours)
 
+'''
+def Next_Class(formatClass, formatTime, formatTeacher):
+    #set up indeces based on week A or B
+    #vvv then collect info using indeces above and changing the final index vvv
+    if formatClass:
+        pass
+    if formatTime:
+        pass
+    if formatTeacher:
+        pass
+    return message
+'''
+
 if In_School():
-    #stuff goes here
+    #Next_Class() goes here
     pass
 elif tt.Holidays:
     print('School Holidays!')
