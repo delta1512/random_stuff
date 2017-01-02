@@ -1,13 +1,16 @@
 import commands
 import TimetableDat as tt
 
+#The following will be at the beginning of the class constructor
+alternate = False #Switch between class and week information
+SwitchThresh = 5 #How many function calls (seconds) before info is switched
+
 global day, hour, minute, weekdef, startSchool, endSchool
 day = commands.getoutput("date '+%a'")
 hour = int(commands.getoutput("date '+%H'"))
 minute = int(commands.getoutput("date '+%M'"))
 weekdef = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-startSchool = tt.schoolTimes[0]
-endSchool = tt.schoolTimes[1]
+startSchool, endSchool = tt.schoolTimes[0], tt.schoolTimes[1]
 
 def shift(l):
     return l[1:] + l[:1]
@@ -61,13 +64,15 @@ def Next_Class(formatClass, formatTime, formatTeacher):
     return message
 '''
 
-if In_School():
-    #Next_Class() goes here
-    pass
-elif tt.Holidays:
-    print('School Holidays!')
-else:
-    print('School in ' + Hrs_to_School() + 'hrs')
+def main():
+    if In_School():
+        #Next_Class() goes here
+        #Option to also cycle through week information (WeekA/B no. x)
+        pass
+    elif tt.Holidays:
+        print('School Holidays!')
+    else:
+        print('School in ' + Hrs_to_School() + 'hrs')
 
 '''
 To Add:
